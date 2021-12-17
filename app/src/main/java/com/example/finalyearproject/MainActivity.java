@@ -7,14 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button login;
-    Button signup;
-    EditText email;
-    EditText password;
+    private Button login,signup;
+    private EditText User_email,User_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         login=findViewById(R.id.login);
         signup=findViewById(R.id.signup);
+        User_email=findViewById(R.id.useremail);
+        User_password=findViewById(R.id.userpassword);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

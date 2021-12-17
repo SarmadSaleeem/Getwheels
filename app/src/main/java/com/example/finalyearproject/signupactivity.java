@@ -1,5 +1,6 @@
 package com.example.finalyearproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,17 +11,19 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class signupactivity extends AppCompatActivity {
 
-    EditText fullname;
-    EditText registeremail;
-    EditText password;
-    EditText confirmpassword;
-    EditText registerphoneno;
-    Button Register;
-    Button BacktoLogin;
+    private EditText Register_name,Register_email,Register_password,Register_confirm_password,Register_phoneno;
+    private Button Register,BacktoLogin;
+    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +31,16 @@ public class signupactivity extends AppCompatActivity {
         setContentView(R.layout.activity_signupactivity);
 
 
-        fullname=findViewById(R.id.fullname);
-        registeremail=findViewById(R.id.registeremail);
-        password=findViewById(R.id.registerpassword);
-        confirmpassword=findViewById(R.id.confirmpassword);
-        registerphoneno=findViewById(R.id.registerphoneno);
+        mAuth = FirebaseAuth.getInstance();
+
+        Register_name=findViewById(R.id.fullname);
+        Register_email=findViewById(R.id.registeremail);
+        Register_password=findViewById(R.id.registerpassword);
+        Register_confirm_password=findViewById(R.id.confirmpassword);
+        Register_phoneno=findViewById(R.id.registerphoneno);
         Register=findViewById(R.id.register);
         BacktoLogin=findViewById(R.id.backtologin);
+        progressBar=findViewById(R.id.progressBar);
 
         BacktoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,52 +54,71 @@ public class signupactivity extends AppCompatActivity {
 
     public void onregister(View view) {
 
-        String name=fullname.getText().toString();
-        String email=registeremail.getText().toString();
-        String inputpassword=password.getText().toString();
-        String confirm=confirmpassword.getText().toString();
-        String phone=registerphoneno.getText().toString();
+        String name=Register_name.getText().toString().trim();
+        String email=Register_email.getText().toString().trim();
+        String input_password=Register_password.getText().toString().trim();
+        String confirm_password=Register_confirm_password.getText().toString().trim();
+        String phone=Register_phoneno.getText().toString().trim();
 
-        boolean check=Validationcheck(name,email,inputpassword,confirm,phone);
-
-        if(check==true){
-            Toast.makeText(getApplicationContext(), "Valid", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "Invalid", Toast.LENGTH_SHORT).show();
-        }
+        Validationcheck(name,email,input_password,confirm_password,phone);
 
     }
 
-    private boolean Validationcheck(String name, String email, String inputpassword, String confirm, String phone) {
+    private void Validationcheck(String name, String email, String input_password, String confirm_password, String phone) {
 
         if(name.isEmpty() || !name.matches("[a-zA-Z, ]+")) {
-            fullname.requestFocus();
-            fullname.setError("Invalid");
-            return false;
+            Register_name.requestFocus();
+            Register_name.setError("Invalid");
         }
         else if(email.isEmpty() || !email.contains("@gmail.com")){
-            registeremail.requestFocus();
-            registeremail.setError("Invalid");
-            return false;
+            Register_email.requestFocus();
+            Register_email.setError("Invalid");
         }
-        else if(inputpassword.isEmpty()){
-            password.requestFocus();
-            password.setError("Invalid");
-            return false;
+        else if(input_password.isEmpty()){
+            Register_password.requestFocus();
+            Register_password.setError("Invalid");
         }
-        else if(!inputpassword.equals(confirm)){
-            confirmpassword.requestFocus();
-            confirmpassword.setError("Password Not Match");
-            return false;
+        else if(!input_password.equals(confirm_password)){
+            Register_confirm_password.requestFocus();
+            Register_confirm_password.setError("Password Not Match");
         }
         else if(phone.isEmpty()|| phone.length()<11){
-            registerphoneno.requestFocus();
-            registerphoneno.setError("Invalid Number");
-            return false;
+            Register_phoneno.requestFocus();
+            Register_phoneno.setError("Invalid Number");
         }
         else {
-            return true;
+            progressBar.setVisibility(View.VISIBLE);
+            mAuth.createUserWithEmailAndPassword(email, input_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    if (task.isSuccessful()) {
+                        GetwheelsUsersData getwheelsUsersData = new GetwheelsUsersData(name, email, input_password, phone);
+
+                        FirebaseDatabase.getInstance().getReference("Users")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()) {
+                                    Toast.makeText(signupactivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
+                                }
+                                else
+                                    {
+                                    Toast.makeText(signupactivity.this, "Failed To Register", Toast.LENGTH_LONG).show();
+                                }
+
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
+                    } else {
+                        Toast.makeText(signupactivity.this, "Failed To Register", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
         }
     }
 }
