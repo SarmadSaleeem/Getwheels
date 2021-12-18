@@ -22,16 +22,18 @@ public class signupactivity extends AppCompatActivity {
 
     private EditText Register_name,Register_email,Register_password,Register_confirm_password,Register_phoneno;
     private Button Register,BacktoLogin;
-    private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signupactivity);
 
-
-        mAuth = FirebaseAuth.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
 
         Register_name=findViewById(R.id.fullname);
         Register_email=findViewById(R.id.registeremail);
@@ -85,10 +87,9 @@ public class signupactivity extends AppCompatActivity {
         else if(phone.isEmpty()|| phone.length()<11){
             Register_phoneno.requestFocus();
             Register_phoneno.setError("Invalid Number");
-        }
-        else {
+        } else {
             progressBar.setVisibility(View.VISIBLE);
-            mAuth.createUserWithEmailAndPassword(email, input_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            firebaseAuth.createUserWithEmailAndPassword(email, input_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -96,20 +97,20 @@ public class signupactivity extends AppCompatActivity {
                         GetwheelsUsersData getwheelsUsersData = new GetwheelsUsersData(name, email, input_password, phone);
 
                         FirebaseDatabase.getInstance().getReference("Users")
-                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                               .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
-                                    Toast.makeText(signupactivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
+                                  Toast.makeText(signupactivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
                                 }
                                 else
-                                    {
+                                   {
                                     Toast.makeText(signupactivity.this, "Failed To Register", Toast.LENGTH_LONG).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);
-                            }
+                          }
                         });
                     } else {
                         Toast.makeText(signupactivity.this, "Failed To Register", Toast.LENGTH_LONG).show();
@@ -120,5 +121,6 @@ public class signupactivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 }
