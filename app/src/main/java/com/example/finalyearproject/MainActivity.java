@@ -77,13 +77,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else {
                         progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getApplicationContext(), ""+task.getException(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Incorrect Email or Password", Toast.LENGTH_SHORT).show();
                     }
 
                 }
             });
         }
-
     }
 
 }

@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Pattern;
+
 public class signupactivity extends AppCompatActivity {
 
     private EditText Register_name,Register_email,Register_password,Register_confirm_password,Register_phoneno;
@@ -72,21 +74,21 @@ public class signupactivity extends AppCompatActivity {
             Register_name.requestFocus();
             Register_name.setError("Invalid");
         }
-        else if(email.isEmpty() || !email.contains("@gmail.com")){
+        else if(email.isEmpty() || !email.matches("^[a-zA-Z0-9_+&*-]+(?:\\."+ "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$")){
             Register_email.requestFocus();
             Register_email.setError("Invalid");
         }
-        else if(input_password.isEmpty()){
+        else if(input_password.isEmpty() || input_password.length()<6){
             Register_password.requestFocus();
-            Register_password.setError("Invalid");
+            Register_password.setError("Password must be 6 character long");
         }
         else if(!input_password.equals(confirm_password)){
             Register_confirm_password.requestFocus();
             Register_confirm_password.setError("Password Not Match");
         }
-        else if(phone.isEmpty()|| phone.length()<11){
+        else if(phone.isEmpty()|| phone.length()<11 || !phone.matches("[+]{1}[9]{1}[2]{1}[0-9]{10}")){
             Register_phoneno.requestFocus();
-            Register_phoneno.setError("Invalid Number");
+            Register_phoneno.setError("+92xxxxxxxxxx Valid Format");
         } else {
             progressBar.setVisibility(View.VISIBLE);
             firebaseAuth.createUserWithEmailAndPassword(email, input_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
