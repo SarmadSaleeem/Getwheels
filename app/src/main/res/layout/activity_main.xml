@@ -9,14 +9,14 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="261dp"
-        android:layout_height="197dp"
+        android:layout_width="306dp"
+        android:layout_height="206dp"
         android:layout_marginTop="40dp"
         android:background="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/applicationlogo" />
+        app:srcCompat="@drawable/logoo" />
 
     <EditText
         android:id="@+id/useremail"
