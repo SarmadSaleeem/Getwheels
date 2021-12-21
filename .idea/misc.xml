@@ -6,11 +6,16 @@
         <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2890625" />
         <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/custom_button.xml" value="0.2890625" />
         <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/field.xml" value="0.2890625" />
+        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.2846153846153846" />
         <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2890625" />
+        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/name.xml" value="0.2846153846153846" />
         <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/signupbutton.xml" value="0.2890625" />
         <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout-notlong/signupform.xml" value="0.33125" />
-        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/activity_signupactivity.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/activity_signupactivity.xml" value="0.25" />
         <entry key="..\:/Users/Sarmad Saleem/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/signupform.xml" value="0.25" />
       </map>
     </option>

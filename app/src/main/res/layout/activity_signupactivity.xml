@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".signupactivity"
-    android:background="@drawable/appbackground">
+    android:background="@drawable/simplebackground">
 
     <TextView
         android:id="@+id/signuptext"
@@ -21,7 +21,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/fullname"
@@ -38,7 +39,9 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signuptext" />
+        app:layout_constraintTop_toBottomOf="@+id/signuptext"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/registeremail"
@@ -55,7 +58,9 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/fullname"
         app:layout_constraintStart_toStartOf="@+id/fullname"
-        app:layout_constraintTop_toBottomOf="@+id/fullname" />
+        app:layout_constraintTop_toBottomOf="@+id/fullname"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/confirmpassword"
@@ -70,6 +75,8 @@
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/registeremail"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/registeremail"
@@ -88,6 +95,7 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/registeremail"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/registeremail"
@@ -106,6 +114,8 @@
         android:hint="PhoneNo"
         android:inputType="phone"
         android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/confirmpassword"
         app:layout_constraintStart_toStartOf="@+id/confirmpassword"
         app:layout_constraintTop_toBottomOf="@+id/confirmpassword" />
@@ -134,7 +144,8 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register" />
+        app:layout_constraintTop_toBottomOf="@+id/register"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/backtologin"
@@ -146,7 +157,8 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="@+id/register"
         app:layout_constraintStart_toStartOf="@+id/register"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:textColor="@color/black"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -157,6 +169,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

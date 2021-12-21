@@ -89,7 +89,8 @@ public class signupactivity extends AppCompatActivity {
         else if(phone.isEmpty()|| phone.length()<11 || !phone.matches("[+]{1}[9]{1}[2]{1}[0-9]{10}")){
             Register_phoneno.requestFocus();
             Register_phoneno.setError("+92xxxxxxxxxx Valid Format");
-        } else {
+        }
+        else {
             progressBar.setVisibility(View.VISIBLE);
             firebaseAuth.createUserWithEmailAndPassword(email, input_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -104,18 +105,20 @@ public class signupactivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
+                                    Intent intent=new Intent(signupactivity.this,HomeActivity.class);
+                                    startActivity(intent);
                                   Toast.makeText(signupactivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
                                 }
                                 else
                                    {
-                                    Toast.makeText(signupactivity.this, "Failed To Register", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(signupactivity.this, ""+task.getException(), Toast.LENGTH_LONG).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);
                           }
                         });
                     } else {
-                        Toast.makeText(signupactivity.this, "Failed To Register", Toast.LENGTH_LONG).show();
+                        Toast.makeText(signupactivity.this, ""+task.getException(), Toast.LENGTH_LONG).show();
                         progressBar.setVisibility(View.GONE);
 
                     }
