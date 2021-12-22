@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1039385682403",
+    "firebase_url": "https://projectgetwheels-default-rtdb.firebaseio.com",
+    "project_id": "projectgetwheels",
+    "storage_bucket": "projectgetwheels.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039385682403:android:4814e977d1bedd8e5c40d6",
+        "android_client_info": {
+          "package_name": "com.example.finalyearproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039385682403-4dsls7cqklm7of2nlavsm8qauak1rei1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK9Oak_7oMO8BnZDC5JlqkxAU7oHjPbvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039385682403-4dsls7cqklm7of2nlavsm8qauak1rei1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

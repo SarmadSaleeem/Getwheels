@@ -11,6 +11,9 @@
         android:theme="@style/Theme.FinalYearProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Renting"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity

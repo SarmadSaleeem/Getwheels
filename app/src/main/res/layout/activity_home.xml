@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#1D9BA5A1"
-        android:fontFamily="@font/aclonica"
+        android:fontFamily="@font/antic"
         android:paddingLeft="30dp"
         android:text="Premium and prestige Car Rental And Car Booking. Experience the thrill at a lower price."
         android:textColor="@color/black"
