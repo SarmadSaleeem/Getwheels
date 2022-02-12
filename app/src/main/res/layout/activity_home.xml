@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/carrenting"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/carbooking"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -52,9 +52,9 @@
         android:text="Car Booking"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintEnd_toEndOf="@+id/carrenting"
+        app:layout_constraintStart_toStartOf="@+id/carrenting"
+        app:layout_constraintTop_toBottomOf="@+id/carrenting" />
 
     <TextView
         android:id="@+id/textView4"

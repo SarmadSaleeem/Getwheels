@@ -80,6 +80,7 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/registeremail"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/registeremail"

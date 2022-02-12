@@ -108,7 +108,7 @@ public class signupactivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
-                                    Intent intent=new Intent(signupactivity.this,HomeActivity.class);
+                                    Intent intent=new Intent(signupactivity.this,MainActivity.class);
                                     startActivity(intent);
                                   Toast.makeText(signupactivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
                                 }
