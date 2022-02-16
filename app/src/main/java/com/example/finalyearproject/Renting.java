@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.AutoCompleteTextView;
@@ -30,7 +31,7 @@ public class Renting extends AppCompatActivity {
 
         RecyclerView recyclerView=findViewById(R.id.recycerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapter(carname_array,carprice_array,cars));
+        recyclerView.setAdapter(new MyAdapter(carname_array,carprice_array,cars,this));
 
 
     }
