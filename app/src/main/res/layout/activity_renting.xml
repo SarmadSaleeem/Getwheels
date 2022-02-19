@@ -9,13 +9,12 @@
     tools:context=".Renting">
 
     <SearchView
-        android:id="@+id/search"
+        android:id="@+id/searchview"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search here"
-        android:background="#454444"/>
+        android:background="#454444"
+        android:padding="10dp"
+        android:layout_margin="15dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycerview"
