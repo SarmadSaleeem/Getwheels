@@ -7,32 +7,47 @@
     tools:context=".CarViewforRent"
     android:background="@drawable/simplebackground">
 
-    <ImageView
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/carimage"
         android:layout_width="360dp"
         android:layout_height="300dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/nameofcar"
+        app:layout_constraintStart_toStartOf="@+id/nameofcar"
+        app:layout_constraintTop_toBottomOf="@+id/nameofcar"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/nameofcar"
         android:layout_width="360dp"
         android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="10dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/carimage"
-        app:layout_constraintStart_toStartOf="@+id/carimage"
-        app:layout_constraintTop_toBottomOf="@+id/carimage"
-        android:textAlignment="center"
-        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/aclonica"
-        android:padding="10dp"
-        android:textSize="20dp"/>
+        android:padding="12dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/field"
+        android:backgroundTint="#474545"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/signupbutton"
+        android:fontFamily="@font/aclonica"
+        android:text="Book Your Ride"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carimage" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

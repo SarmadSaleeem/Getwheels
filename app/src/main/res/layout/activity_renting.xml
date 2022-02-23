@@ -12,13 +12,14 @@
         android:id="@+id/searchview"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#454444"
+        android:background="@drawable/field"
         android:padding="10dp"
-        android:layout_margin="15dp" />
+        android:layout_margin="15dp"
+        android:backgroundTint="#474545"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"/>
 </LinearLayout>

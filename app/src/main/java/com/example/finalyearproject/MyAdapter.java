@@ -122,6 +122,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
                     intent.putExtra("carname", data.get(getAdapterPosition()).getCarname());
                     intent.putExtra("carprice", data.get(getAdapterPosition()).getCarprice());
                     intent.putExtra("carpicture", data.get(getAdapterPosition()).getCarimage());
+                    intent.putIntegerArrayListExtra("otherimages",data.get(getAdapterPosition()).getOtherimage());
                     context.startActivity(intent);
 
                 }

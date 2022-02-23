@@ -1,25 +1,3 @@
 <resources>
     <string name="app_name">GetWheels</string>
-    <string-array name="carname">
-        <item>Honda Civic</item>
-        <item>Honda City</item>
-        <item>Suzuki Alto</item>
-        <item>Suzuki Cultus</item>
-        <item>Honda WagonR</item>
-        <item>Toyota Corolla</item>
-        <item>Toyota Yaris</item>
-        <item>Changan Alsvin</item>
-    </string-array>
-
-
-    <string-array name="priceperday">
-        <item>PKR 3000/day</item>
-        <item>PKR 2800/day</item>
-        <item>PKR 2600/day</item>
-        <item>PKR 2500/day</item>
-        <item>PKR 3000/day</item>
-        <item>PKR 3200/day</item>
-        <item>PKR 2900/day</item>
-        <item>PKR 3500/day</item>
-    </string-array>
 </resources>
