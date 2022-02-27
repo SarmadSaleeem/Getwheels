@@ -11,6 +11,9 @@
         android:theme="@style/Theme.FinalYearProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".GetUserDetails"
+            android:exported="false" />
+        <activity
             android:name=".CarViewforRent"
             android:exported="false" />
         <activity

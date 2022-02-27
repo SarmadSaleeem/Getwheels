@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarViewforRent"
     android:background="@drawable/simplebackground">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/carimage"
         android:layout_width="360dp"
         android:layout_height="300dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/nameofcar"
         app:layout_constraintStart_toStartOf="@+id/nameofcar"
         app:layout_constraintTop_toBottomOf="@+id/nameofcar"
+        tools:ignore="SpeakableTextPresentCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/nameofcar"
-        android:layout_width="360dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/field"
+        android:backgroundTint="#474545"
         android:fontFamily="@font/aclonica"
         android:padding="12dp"
         android:text="TextView"
@@ -30,24 +32,31 @@
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/field"
-        android:backgroundTint="#474545"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:id="@+id/clickbook"
+        android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/signupbutton"
         android:fontFamily="@font/aclonica"
-        android:text="Book Your Ride"
+        android:text="Get Ride"
         android:textColor="@color/white"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="15dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/carimage"
+        app:layout_constraintStart_toStartOf="@+id/carimage"
         app:layout_constraintTop_toBottomOf="@+id/carimage" />
+
+    <FrameLayout
+        android:id="@+id/dataentryfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
