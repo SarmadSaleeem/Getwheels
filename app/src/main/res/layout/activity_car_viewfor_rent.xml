@@ -6,13 +6,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/simplebackground">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="172dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/logoo" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/carimage"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/nameofcar"
-        app:layout_constraintStart_toStartOf="@+id/nameofcar"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameofcar"
         tools:ignore="SpeakableTextPresentCheck"
         tools:srcCompat="@tools:sample/avatars" />
@@ -21,7 +31,7 @@
         android:id="@+id/nameofcar"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/field"
         android:backgroundTint="#474545"
         android:fontFamily="@font/aclonica"
@@ -32,21 +42,21 @@
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/clickbook"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/signupbutton"
         android:fontFamily="@font/aclonica"
         android:text="Get Ride"
         android:textColor="@color/white"
         android:textSize="15dp"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/carimage"
-        app:layout_constraintStart_toStartOf="@+id/carimage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carimage" />
 
     <FrameLayout
@@ -56,7 +66,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

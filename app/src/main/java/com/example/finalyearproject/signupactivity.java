@@ -28,7 +28,6 @@ public class signupactivity extends AppCompatActivity {
     private ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
-    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +101,7 @@ public class signupactivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         GetwheelsUsersData getwheelsUsersData = new GetwheelsUsersData(name, email, input_password, phone);
 
-                        FirebaseDatabase.getInstance().getReference("Users")
-                               .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                .setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
