@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/home_icon"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"/>
+
+    <item android:id="@+id/update_icon"
+        android:icon="@drawable/update_profile"
+        android:title="Profile"/>
+
+    <item android:id="@+id/Logout_icon"
+        android:title="Logout"
+        android:icon="@drawable/log_out"/>
+
+    <item android:title="Driver_Mode">
+
+        <menu>
+           <item android:title="Register"
+               android:icon="@drawable/car"
+               android:id="@+id/register_icon">
+
+           </item>
+
+        </menu>
+
+
+    </item>
+
+</menu>

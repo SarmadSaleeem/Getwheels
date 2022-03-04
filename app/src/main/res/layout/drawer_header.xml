@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#474545">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/AssignendProfile"
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/profile"
+        app:shapeAppearanceOverlay="@style/cirular"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AssignendProfile"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
+        android:text="Sarmad Saleem"
+        android:textSize="22dp"
+        android:fontFamily="@font/aclonica"
+        android:id="@+id/AssignendName"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

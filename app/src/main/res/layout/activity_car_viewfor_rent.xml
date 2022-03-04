@@ -6,21 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/simplebackground">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="172dp"
-        android:layout_height="163dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logoo" />
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/carimage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameofcar"
@@ -31,7 +21,7 @@
         android:id="@+id/nameofcar"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/field"
         android:backgroundTint="#474545"
         android:fontFamily="@font/aclonica"
@@ -42,7 +32,7 @@
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/dataentryfragment" />
 
     <Button
         android:id="@+id/clickbook"

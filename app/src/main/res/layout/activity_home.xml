@@ -1,107 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menu"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:id="@+id/mydrawerlayout"
+    tools:openDrawer="start">
 
-    <TextView
-        android:id="@+id/textView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="310dp"
-        android:background="#1D9BA5A1"
-        android:fontFamily="@font/aclonica"
-        android:paddingLeft="30dp"
-        android:paddingTop="15dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="15dp"
-        android:text="Premium Cars."
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.281"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/carrenting"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/signupbutton"
-        android:fontFamily="@font/aclonica"
-        android:text="Car Renting"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="#474545"
+            app:navigationIcon="@drawable/ic_baseline_menu_24"
+            app:title="GetWheels"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white"
+            android:id="@+id/toolbar"/>
 
-    <Button
-        android:id="@+id/carbooking"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/signupbutton"
-        android:fontFamily="@font/aclonica"
-        android:text="Car Booking"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/carrenting"
-        app:layout_constraintStart_toStartOf="@+id/carrenting"
-        app:layout_constraintTop_toBottomOf="@+id/carrenting" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#1D9BA5A1"
-        android:fontFamily="@font/antic"
-        android:paddingLeft="30dp"
-        android:text="Premium and prestige Car Rental And Car Booking. Experience the thrill at a lower price."
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="380dp"
+            android:background="#1D9BA5A1"
+            android:fontFamily="@font/antic"
+            android:paddingLeft="30dp"
+            android:text="Premium and prestige Car Rental And Car Booking. Experience the thrill at a lower price."
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:height="50dp"
-        android:fontFamily="@font/aclonica"
-        android:text="Choose An Option"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        android:paddingTop="10dp"
-        android:background="#1D9BA5A1"/>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="310dp"
+            android:background="#1D9BA5A1"
+            android:fontFamily="@font/aclonica"
+            android:paddingLeft="30dp"
+            android:paddingTop="15dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            android:text="Premium Cars."
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="#1D9BA5A1"
-        android:fontFamily="@font/aclonica"
-        android:paddingTop="20dp"
-        android:text="Get Wheels"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="440dp"
+            android:height="50dp"
+            android:fontFamily="@font/aclonica"
+            android:text="Choose An Option"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:background="#1D9BA5A1"/>
+
+
+        <Button
+            android:id="@+id/carrenting"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="500dp"
+            android:background="@drawable/signupbutton"
+            android:fontFamily="@font/aclonica"
+            android:text="Car Renting"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/carbooking"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="560dp"
+            android:background="@drawable/signupbutton"
+            android:fontFamily="@font/aclonica"
+            android:text="Car Booking"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="#474545"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/drawer"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_header"
+        android:layout_gravity="start" />
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
