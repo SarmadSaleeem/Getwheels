@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalYearProject"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".Driver_Registration"
+            android:exported="false"/>
         <activity
             android:name=".GetUserDetails"
             android:exported="false" />

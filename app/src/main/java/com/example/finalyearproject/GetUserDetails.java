@@ -121,7 +121,7 @@ public class GetUserDetails extends AppCompatActivity {
 
                     userdatetime dateTime=new userdatetime(RentingD,ReturnD);
 
-                    firebaseDatabase.getReference("Users").child(firebaseAuth.getUid()).child("Rent&Return_Date").setValue(dateTime);
+                    firebaseDatabase.getReference("Users").child(firebaseAuth.getUid()).child("Date_Time").setValue(dateTime);
 
                     reference.putFile(forid).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -159,6 +159,7 @@ public class GetUserDetails extends AppCompatActivity {
         public userdatetime(String rentDate, String returnDate) {
             this.RentDate = rentDate;
             this.ReturnDate = returnDate;
+
         }
     }
 }

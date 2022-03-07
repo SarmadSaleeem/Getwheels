@@ -11,7 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -21,7 +25,11 @@ public class CarViewforRent extends AppCompatActivity {
     ArrayList<Integer> otherimage;
     ViewPager viewPager;
 
+    FirebaseDatabase firebaseDatabase;
+    FirebaseAuth firebaseAuth;
+
     Button booking;
+    public String CarName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +44,10 @@ public class CarViewforRent extends AppCompatActivity {
 
         booking=findViewById(R.id.clickbook);
 
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
+
+
         Intent intent=getIntent();
 
         //carimage.setImageResource(intent.getIntExtra("carpicture",0));
@@ -43,11 +55,15 @@ public class CarViewforRent extends AppCompatActivity {
         otherimage=intent.getIntegerArrayListExtra("otherimages");
         Slider slider=new Slider(otherimage);
         viewPager.setAdapter(slider);
+        CarName=intent.getStringExtra("carname");
+
 
 
         booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Car_Name").setValue(CarName);
 
                 Intent myintent = new Intent(CarViewforRent.this,GetUserDetails.class);
                 startActivity(myintent);

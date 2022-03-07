@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity{
     Button carrenting;
     Button carbooking;
 
@@ -55,18 +55,9 @@ public class HomeActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId())
-                {
-                    case R.id.home_icon:
-                        Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-
-                    case R.id.update_icon:
-                        Toast.makeText(HomeActivity.this, "Setting", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+                if(item.getItemId()==R.id.register_icon){
+                    Intent driverregistration=new Intent(HomeActivity.this,Driver_Registration.class);
+                    startActivity(driverregistration);
                 }
                 return true;
             }
@@ -79,6 +70,5 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
