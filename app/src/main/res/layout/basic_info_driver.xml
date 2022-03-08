@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Basic_Info_Fragment"
+    android:background="@drawable/simplebackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/antic"
+            android:text="First Name"
+            android:textColor="@color/black"
+            android:textSize="25dp"></TextView>
+
+        <EditText
+            android:id="@+id/driver_registration_fn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/forwardstyle"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/antic"
+            android:text="Last Name"
+            android:textColor="@color/black"
+            android:textSize="25dp"></TextView>
+
+        <EditText
+            android:id="@+id/driver_registration_ln"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/forwardstyle"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/antic"
+            android:text="Email Address"
+            android:textColor="@color/black"
+            android:textSize="25dp"></TextView>
+
+        <EditText
+            android:id="@+id/driver_registration_email"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/forwardstyle"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+
+        <Button
+            android:id="@+id/driver_registration_submit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="210dp"
+            android:background="@drawable/signupbutton"
+            android:text="Submit"
+            android:fontFamily="@font/antic"
+            android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
