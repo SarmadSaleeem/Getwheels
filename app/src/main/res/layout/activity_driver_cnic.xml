@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/simplebackground"
+    android:orientation="vertical"
+    tools:context=".Driver_CNIC">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/antic"
+            android:text="Upload ID Card Front Side"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <ImageView
+            android:id="@+id/driver_registration_idcardfront"
+            android:layout_width="300dp"
+            android:layout_height="230dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/id_card" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/antic"
+            android:text="Upload ID Card Back Side"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <ImageView
+            android:id="@+id/driver_registration_idcardback"
+            android:layout_width="300dp"
+            android:layout_height="230dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/id_card" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/driver_registration_submit_idinfo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/signupbutton"
+            android:fontFamily="@font/antic"
+            android:text="Submit"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

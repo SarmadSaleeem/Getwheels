@@ -10,12 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalYearProject"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".Basic_Info_Fragment"
-            android:exported="false"/>
-
-        <activity android:name=".Driver_Registration"
-            android:exported="false"/>
+        <activity
+            android:name=".Driver_Vehicle_info"
+            android:exported="false" />
+        <activity
+            android:name=".Driver_CNIC"
+            android:exported="false" />
+        <activity
+            android:name=".Basic_Info_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Driver_Registration"
+            android:exported="false" />
         <activity
             android:name=".GetUserDetails"
             android:exported="false" />

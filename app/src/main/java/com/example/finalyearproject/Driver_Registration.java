@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 public class Driver_Registration extends AppCompatActivity {
 
@@ -28,8 +26,32 @@ public class Driver_Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent basicinfo=new Intent(Driver_Registration.this,Basic_Info_Fragment.class);
+                Intent basicinfo=new Intent(Driver_Registration.this, Basic_Info_Activity.class);
                 startActivity(basicinfo);
+            }
+        });
+
+        licence.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent licnece=new Intent(Driver_Registration.this,Driver_Licence.class);
+                startActivity(licnece);
+            }
+        });
+
+        cnic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cnic=new Intent(Driver_Registration.this,Driver_CNIC.class);
+                startActivity(cnic);
+            }
+        });
+
+        vehicle_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vehicle_info=new Intent(Driver_Registration.this,Driver_Vehicle_info.class);
+                startActivity(vehicle_info);
             }
         });
     }

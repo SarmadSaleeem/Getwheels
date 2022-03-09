@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Basic_Info_Fragment"
+    tools:context=".Basic_Info_Activity"
     android:background="@drawable/simplebackground">
 
     <RelativeLayout
@@ -18,7 +18,7 @@
             android:fontFamily="@font/antic"
             android:text="First Name"
             android:textColor="@color/black"
-            android:textSize="25dp"></TextView>
+            android:textSize="25dp"/>
 
         <EditText
             android:id="@+id/driver_registration_fn"
@@ -29,7 +29,8 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/forwardstyle"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </RelativeLayout>
 
@@ -57,7 +58,8 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/forwardstyle"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </RelativeLayout>
 
@@ -87,8 +89,41 @@
             android:background="@drawable/forwardstyle"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck" />
 
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="360dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/antic"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:textSize="25dp"/>
+
+        <EditText
+            android:id="@+id/driver_registration_password"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/forwardstyle"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/driver_registration_submit"
@@ -97,10 +132,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="210dp"
             android:background="@drawable/signupbutton"
-            android:text="Submit"
             android:fontFamily="@font/antic"
-            android:textStyle="bold"/>
-
+            android:text="Submit"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

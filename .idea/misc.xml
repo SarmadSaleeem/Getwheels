@@ -37,11 +37,15 @@
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/drawable/ic_launcher_background.xml" value="0.168" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/drawable/name.xml" value="0.168" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_car_viewfor_rent.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_driver_cnic.xml" value="0.25" />
+        <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_driver_licence.xml" value="0.22" />
+        <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_driver_vehicle_info.xml" value="0.25" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_get_user_details.xml" value="0.22" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_renting.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/activity_signupactivity.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/basic_info_driver.xml" value="0.2" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/drawer_header.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/drawer_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/layout/driver_registration.xml" value="0.25" />
