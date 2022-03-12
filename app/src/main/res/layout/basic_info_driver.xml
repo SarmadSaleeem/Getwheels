@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Basic_Info_Activity"
+    tools:context=".Driver_BasicInfo"
     android:background="@drawable/simplebackground">
 
     <RelativeLayout
@@ -18,7 +18,7 @@
             android:fontFamily="@font/antic"
             android:text="First Name"
             android:textColor="@color/black"
-            android:textSize="25dp"/>
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/driver_registration_fn"

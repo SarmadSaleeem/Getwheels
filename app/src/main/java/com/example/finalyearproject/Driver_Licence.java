@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Driver_Licence extends AppCompatActivity {
 
@@ -18,6 +19,8 @@ public class Driver_Licence extends AppCompatActivity {
     ImageView driver_licenceImg;
     Button uploadlicence_info;
     Uri imguri;
+
+    public String Driver_licence_No;
 
     ActivityResultLauncher<String> getlicence_img;
 
@@ -42,6 +45,22 @@ public class Driver_Licence extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getlicence_img.launch("image/*");
+            }
+        });
+
+        uploadlicence_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Driver_licence_No=driver_licenceNo.getText().toString();
+
+                if(Driver_licence_No.length()==0){
+                    driver_licenceNo.requestFocus();
+                    driver_licenceNo.setError("Required");
+                }
+
+                else if(imguri==null){
+                    Toast.makeText(Driver_Licence.this, "Image Required", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

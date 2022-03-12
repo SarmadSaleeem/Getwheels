@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Driver_Vehicle_info extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class Driver_Vehicle_info extends AppCompatActivity {
     Button Submit_Vehicle_Info;
     ActivityResultLauncher<String> car_image;
     Uri Car_Img_Uri;
+
+    public String Car_Number_Plate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,21 @@ public class Driver_Vehicle_info extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 car_image.launch("image/*");
+            }
+        });
+
+        Submit_Vehicle_Info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Car_Number_Plate=Car_NumberPlate.getText().toString();
+
+                if(Car_Number_Plate.length()==0){
+                    Car_NumberPlate.requestFocus();
+                    Car_NumberPlate.setError("Required");
+                }
+                else if(Car_Img_Uri==null){
+                    Toast.makeText(Driver_Vehicle_info.this, "Image Required", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

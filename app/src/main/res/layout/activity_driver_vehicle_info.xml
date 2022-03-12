@@ -19,7 +19,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/antic"
-            android:text="Driver Licence Number"
+            android:text="Car Number Plate Number"
             android:textColor="@color/black"
             android:textSize="25dp" />
 

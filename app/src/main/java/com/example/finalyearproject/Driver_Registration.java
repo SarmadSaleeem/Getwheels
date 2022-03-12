@@ -26,7 +26,7 @@ public class Driver_Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent basicinfo=new Intent(Driver_Registration.this, Basic_Info_Activity.class);
+                Intent basicinfo=new Intent(Driver_Registration.this, Driver_BasicInfo.class);
                 startActivity(basicinfo);
             }
         });

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Driver_CNIC extends AppCompatActivity {
 
@@ -61,6 +62,20 @@ public class Driver_CNIC extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getid_back.launch("image/*");
+            }
+        });
+
+        sumbit_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(front_side_id==null){
+                    Toast.makeText(Driver_CNIC.this, "Image Required", Toast.LENGTH_SHORT).show();
+                }
+
+                else if(back_side_id==null){
+                    Toast.makeText(Driver_CNIC.this, "Image Required", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

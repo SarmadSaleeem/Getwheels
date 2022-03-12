@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalYearProject"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".Driver_Licence"
+            android:exported="false"/>
         <activity
             android:name=".Driver_Vehicle_info"
             android:exported="false" />
@@ -17,7 +20,7 @@
             android:name=".Driver_CNIC"
             android:exported="false" />
         <activity
-            android:name=".Basic_Info_Activity"
+            android:name=".Driver_BasicInfo"
             android:exported="false" />
         <activity
             android:name=".Driver_Registration"
