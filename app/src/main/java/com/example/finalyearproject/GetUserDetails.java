@@ -72,8 +72,8 @@ public class GetUserDetails extends AppCompatActivity {
 
         uploading=findViewById(R.id.imageuploadingprogress);
 
-        StorageReference reference=firebaseStorage.getReference().child(FirebaseAuth.getInstance().getUid()).child("ID_Card_");
-        StorageReference reference1=firebaseStorage.getReference().child(FirebaseAuth.getInstance().getUid()).child("licence_");
+        StorageReference reference=firebaseStorage.getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("ID_Card_");
+        StorageReference reference1=firebaseStorage.getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("licence_");
 
 
         launcher=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
@@ -128,10 +128,28 @@ public class GetUserDetails extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(GetUserDetails.this, "Error Occurred", Toast.LENGTH_SHORT).show();
                         }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Licence_Uri")
+                                            .setValue(uri.toString());
+                                }
+                            });
+                        }
                     });
                     reference1.putFile(forlicence).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        reference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Id_Card_Uri")
+                                        .setValue(uri.toString());
+                            }
+                        });
                         Toast.makeText(getApplicationContext(), "Files Uploaded", Toast.LENGTH_SHORT).show();
                         uploading.setVisibility(View.GONE);
                     }

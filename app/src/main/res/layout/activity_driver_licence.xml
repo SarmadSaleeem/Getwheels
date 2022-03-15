@@ -30,6 +30,7 @@
             android:layout_marginTop="95dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/forwardstyle"
+            android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="@color/black"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -51,7 +52,8 @@
             android:layout_height="230dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="209dp"
-            android:background="@drawable/driving_license" />
+            android:background="@drawable/driving_license"
+            android:scaleType="fitXY" />
 
     </RelativeLayout>
 
@@ -66,5 +68,13 @@
         android:fontFamily="@font/antic"
         android:text="Submit"
         android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/driver_licence_progress"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="410dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>

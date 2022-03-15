@@ -11,7 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class Driver_Vehicle_info extends AppCompatActivity {
 
@@ -23,6 +31,12 @@ public class Driver_Vehicle_info extends AppCompatActivity {
 
     public String Car_Number_Plate;
 
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    FirebaseStorage firebaseStorage;
+
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +45,11 @@ public class Driver_Vehicle_info extends AppCompatActivity {
         Car_NumberPlate=findViewById(R.id.driver_registration_Number_plate);
         Car_Img=findViewById(R.id.driver_registration_carimage);
         Submit_Vehicle_Info=findViewById(R.id.driver_registration_submit_vehicleinfo);
+        progressBar=findViewById(R.id.vehicle_info_progress);
+
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
 
         car_image=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
@@ -61,9 +80,33 @@ public class Driver_Vehicle_info extends AppCompatActivity {
                 else if(Car_Img_Uri==null){
                     Toast.makeText(Driver_Vehicle_info.this, "Image Required", Toast.LENGTH_SHORT).show();
                 }
+                else {
+
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("Vehicle_Info")
+                            .child("Number_Plate_No").setValue(Car_Number_Plate);
+
+                    firebaseStorage.getReference("Driver_Data").child(firebaseAuth.getCurrentUser().getUid())
+                            .child("Vehicle_Img").putFile(Car_Img_Uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            firebaseStorage.getReference("Driver_Data").child(firebaseAuth.getCurrentUser().getUid())
+                                    .child("Vehicle_Info").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("Vehicle_Info")
+                                            .child("Car_Image_Uri").setValue(uri.toString());
+                                    progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(Driver_Vehicle_info.this, "Details Uploaded", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        }
+                    });
+                }
             }
         });
-
-
     }
 }

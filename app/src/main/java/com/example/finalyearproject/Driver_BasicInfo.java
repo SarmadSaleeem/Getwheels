@@ -74,7 +74,7 @@ public class Driver_BasicInfo extends AppCompatActivity {
                     driver_email.setError("Invalid");
                 }
 
-                else if(password_driver.length()==0){
+                else if(password_driver.length()==0||password_driver.length()<6){
                     driver_password.requestFocus();
                     driver_password.setError("Invalid");
                 }

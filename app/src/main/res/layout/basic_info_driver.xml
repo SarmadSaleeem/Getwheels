@@ -29,10 +29,9 @@
             android:layout_marginTop="95dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/forwardstyle"
+            android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:inputType="text"/>
+            android:textColor="@color/black" />
 
     </RelativeLayout>
 
@@ -49,7 +48,7 @@
             android:fontFamily="@font/antic"
             android:text="Last Name"
             android:textColor="@color/black"
-            android:textSize="25dp"></TextView>
+            android:textSize="25dp"/>
 
         <EditText
             android:id="@+id/driver_registration_ln"
@@ -59,10 +58,9 @@
             android:layout_marginTop="95dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/forwardstyle"
+            android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:inputType="text"/>
+            android:textColor="@color/black" />
 
     </RelativeLayout>
 
@@ -80,7 +78,7 @@
             android:fontFamily="@font/antic"
             android:text="Email Address"
             android:textColor="@color/black"
-            android:textSize="25dp"></TextView>
+            android:textSize="25dp"/>
 
         <EditText
             android:id="@+id/driver_registration_email"
@@ -124,10 +122,10 @@
             android:layout_marginTop="95dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/forwardstyle"
+            android:inputType="textPassword"
             android:textAlignment="center"
             android:textColor="@color/black"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:inputType="textPassword"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/driver_registration_submit"
@@ -151,11 +149,11 @@
             android:id="@+id/upload_basic_progress"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
