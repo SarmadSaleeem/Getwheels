@@ -4,9 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +31,8 @@ public class Driver_BasicInfo extends AppCompatActivity {
     public String email_driver;
     public String password_driver;
 
+    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,10 @@ public class Driver_BasicInfo extends AppCompatActivity {
         driver_email=findViewById(R.id.driver_registration_email);
         sumbitbasic=findViewById(R.id.driver_registration_submit);
         driver_password=findViewById(R.id.driver_registration_password);
+        progressBar=findViewById(R.id.upload_basic_progress);
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
 
 
         sumbitbasic.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +78,35 @@ public class Driver_BasicInfo extends AppCompatActivity {
                     driver_password.requestFocus();
                     driver_password.setError("Invalid");
                 }
+
+                else{
+                    progressBar.setVisibility(View.VISIBLE);
+                    Basin_info_Class basic=new Basin_info_Class(driver_first_name,driver_last_name,email_driver,password_driver);
+
+                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("Basic Info").setValue(basic).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(Driver_BasicInfo.this, "Details Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
+    }
+
+    public class Basin_info_Class{
+
+        public String Driver_First_Name;
+        public String Driver_Last_Name;
+        public String Driver_Email;
+        public String Driver_Password;
+
+        public Basin_info_Class(String driver_First_Name, String driver_Last_Name, String driver_Email, String driver_Password) {
+            this.Driver_First_Name = driver_First_Name;
+            this.Driver_Last_Name = driver_Last_Name;
+            this.Driver_Email = driver_Email;
+            this.Driver_Password = driver_Password;
+        }
     }
 }
