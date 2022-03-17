@@ -14,6 +14,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -21,8 +22,7 @@
             app:navigationIcon="@drawable/ic_baseline_menu_24"
             app:title="GetWheels"
             app:titleCentered="true"
-            app:titleTextColor="@color/white"
-            android:id="@+id/toolbar"/>
+            app:titleTextColor="@color/white" />
 
 
         <TextView

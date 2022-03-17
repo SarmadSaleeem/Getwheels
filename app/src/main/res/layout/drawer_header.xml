@@ -8,21 +8,22 @@
 
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/AssignendProfile"
-        android:layout_width="160dp"
-        android:layout_height="120dp"
+        android:id="@+id/Assign_Profile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/profile"
-        app:shapeAppearanceOverlay="@style/cirular"/>
+        app:shapeAppearanceOverlay="@style/cirular"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AssignendProfile"
+        app:layout_constraintTop_toBottomOf="@+id/Assign_Profile"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,6 +31,6 @@
         android:text="Sarmad Saleem"
         android:textSize="22dp"
         android:fontFamily="@font/aclonica"
-        android:id="@+id/AssignendName"/>
+        android:id="@+id/Assign_Name"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
