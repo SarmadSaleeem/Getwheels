@@ -75,6 +75,20 @@ public class HomeActivity extends AppCompatActivity{
         TextView set_name=header_view.findViewById(R.id.Assign_Name);
         ImageView set_dp=header_view.findViewById(R.id.Assign_Profile);
 
+        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid())
+                .child("DP Uri").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String image=snapshot.getValue(String.class);
+                Picasso.get().load(image).into(set_dp);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         dp=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
@@ -101,20 +115,6 @@ public class HomeActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 dp.launch("image/*");
-            }
-        });
-
-        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid())
-                .child("DP Uri").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String image=snapshot.getValue(String.class);
-                Picasso.get().load(image).into(set_dp);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
