@@ -136,6 +136,14 @@ public class HomeActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        carbooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeActivity.this,MapsActivity.class);
+                startActivity(intent);
+            }
+        });
         
     }
 }
