@@ -57,8 +57,6 @@ public class MapsActivity extends AppCompatActivity {
                         permissionToken.continuePermissionRequest();
                     }
                 }).check();
-
-
     }
 
     private void getmylocation() {
