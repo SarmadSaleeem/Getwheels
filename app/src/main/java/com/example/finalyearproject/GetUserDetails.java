@@ -102,6 +102,7 @@ public class GetUserDetails extends AppCompatActivity {
         StorageReference reference=firebaseStorage.getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("ID_Card_");
         StorageReference reference1=firebaseStorage.getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("licence_");
 
+        date1.setFocusable(false);
         date1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +113,7 @@ public class GetUserDetails extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
+        date2.setFocusable(false);
         date2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +125,7 @@ public class GetUserDetails extends AppCompatActivity {
             }
         });
 
+        rent_time.setFocusable(false);
         rent_time.setOnClickListener(view ->{
 
             TimePickerDialog dialog=new TimePickerDialog(GetUserDetails.this, new TimePickerDialog.OnTimeSetListener() {
@@ -136,6 +138,7 @@ public class GetUserDetails extends AppCompatActivity {
             dialog.show();
         });
 
+        return_time.setFocusable(false);
         return_time.setOnClickListener(view ->{
 
             TimePickerDialog dialog=new TimePickerDialog(GetUserDetails.this, new TimePickerDialog.OnTimeSetListener() {
