@@ -9,7 +9,7 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="555dp"
         tools:context=".MapsActivity" />
 
     <RelativeLayout
@@ -30,34 +30,39 @@
             android:fontFamily="@font/antic"
             android:hint="From :"
             android:inputType="text"
-            android:paddingLeft="20dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+            android:drawablePadding="10dp"/>
 
         <EditText
+            android:id="@+id/to_location"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="70dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/forwardstyle"
+            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+            android:drawablePadding="10dp"
             android:fontFamily="@font/antic"
             android:hint="To :"
             android:inputType="text"
-            android:paddingLeft="20dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:id="@+id/to_location"/>
+            android:textStyle="bold" />
 
         <Button
+            android:id="@+id/submit_request"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="130dp"
+            android:layout_below="@+id/to_location"
+            android:layout_marginTop="-73dp"
             android:background="@drawable/signupbutton"
             android:fontFamily="@font/antic"
             android:text="Submit Request" />
