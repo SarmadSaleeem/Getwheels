@@ -35,8 +35,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Dash;
+import com.google.android.gms.maps.model.Gap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -242,16 +245,15 @@ public class MapsActivity extends AppCompatActivity {
                         }
                     });
 
+                    List<PatternItem> pattern=Arrays.<PatternItem> asList(new Dash(30),new Gap(20));
+
                    // DisplayTrack(Current,Destination);
 
                     if(polyline != null) polyline.remove();
 
                     PolylineOptions polylineOptions=new PolylineOptions().add(latLng_current_for_database,latLng_destination_for_database).clickable(true);
 
-                    polyline=map.addPolyline(polylineOptions);
-                    polyline.setColor(Color.BLACK);
-
-
+                    polyline=map.addPolyline(polylineOptions.width(10).color(Color.MAGENTA).geodesic(false).pattern(pattern));
                 }
             }
         });
@@ -323,8 +325,8 @@ public class MapsActivity extends AppCompatActivity {
 
                         map=googleMap;
 
-                       // latLng=new LatLng(location.getLatitude(),location.getLongitude());
-                       // map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17));
+                       latLng=new LatLng(location.getLatitude(),location.getLongitude());
+                       map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,18));
 
                         location_data.getCurrent_location().observe(MapsActivity.this, new Observer<String>() {
                             @Override
@@ -369,7 +371,7 @@ public class MapsActivity extends AppCompatActivity {
 
                                         destination_marker=new MarkerOptions().position(latLng_destination).title("Destination_Location");
                                         map.addMarker(destination_marker);
-                                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng_destination,15));
+                                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng_destination,14));
                                     }
 
                                     else {
