@@ -110,9 +110,6 @@ public class MapsActivity extends AppCompatActivity {
     MarkerOptions destination_marker;
 
     Polyline polyline=null;
-
-    List<LatLng> latLngList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -339,7 +336,6 @@ public class MapsActivity extends AppCompatActivity {
                                         double longitude_Current_Location=addressList_current.get(0).getLongitude();
 
                                         latLng_current=new LatLng(latitude_Current_Location,longitude_Current_Location);
-                                        //latLngList.add(latLng_current);
 
                                         current_marker=new MarkerOptions().position(latLng_current).title("Pick_Up_Location");
                                         map.addMarker(current_marker);
@@ -367,7 +363,6 @@ public class MapsActivity extends AppCompatActivity {
                                         double longitude_destination=addressList_destination.get(0).getLongitude();
 
                                         latLng_destination=new LatLng(latitude_destination,longitude_destination);
-                                       // latLngList.add(latLng_destination);
 
                                         destination_marker=new MarkerOptions().position(latLng_destination).title("Destination_Location");
                                         map.addMarker(destination_marker);
