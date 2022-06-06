@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseAuth mauth;
 
+    TextView driver_sign_in;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         User_password=findViewById(R.id.userpassword);
         progressBar=findViewById(R.id.progressBar2);
         mauth=FirebaseAuth.getInstance();
+        driver_sign_in=findViewById(R.id.driversignin);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AttemptLogin();
+            }
+        });
+
+        driver_sign_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Driver_Sign_In.class);
+                startActivity(intent);
             }
         });
     }

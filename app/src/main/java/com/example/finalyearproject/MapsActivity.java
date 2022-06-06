@@ -244,8 +244,6 @@ public class MapsActivity extends AppCompatActivity {
 
                     List<PatternItem> pattern=Arrays.<PatternItem> asList(new Dash(30),new Gap(20));
 
-                   // DisplayTrack(Current,Destination);
-
                     if(polyline != null) polyline.remove();
 
                     PolylineOptions polylineOptions=new PolylineOptions().add(latLng_current_for_database,latLng_destination_for_database).clickable(true);
