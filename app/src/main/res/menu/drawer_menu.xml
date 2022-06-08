@@ -16,11 +16,18 @@
     <item android:title="Driver_Mode">
 
         <menu>
-           <item android:title="Register"
+           <item android:title="Driver Registration"
                android:icon="@drawable/car"
                android:id="@+id/register_icon">
 
            </item>
+
+            <item android:title="Switch To Driver"
+                android:icon="@drawable/car"
+                android:id="@+id/Switch_Mode">
+
+
+            </item>
 
         </menu>
 

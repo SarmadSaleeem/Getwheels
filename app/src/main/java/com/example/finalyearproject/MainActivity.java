@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         User_password=findViewById(R.id.userpassword);
         progressBar=findViewById(R.id.progressBar2);
         mauth=FirebaseAuth.getInstance();
-        driver_sign_in=findViewById(R.id.driversignin);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,14 +54,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AttemptLogin();
-            }
-        });
-
-        driver_sign_in.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Driver_Sign_In.class);
-                startActivity(intent);
             }
         });
     }

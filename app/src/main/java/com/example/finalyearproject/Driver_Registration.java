@@ -17,19 +17,9 @@ public class Driver_Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.driver_registration);
 
-        basicinfo=findViewById(R.id.driver_basicinfo);
         licence=findViewById(R.id.driver_driverlicence);
         cnic=findViewById(R.id.driver_cnic);
         vehicle_info=findViewById(R.id.driver_vehicleinfo);
-
-        basicinfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent basicinfo=new Intent(Driver_Registration.this, Driver_BasicInfo.class);
-                startActivity(basicinfo);
-            }
-        });
 
         licence.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -101,13 +101,16 @@ public class signupactivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         GetwheelsUsersData getwheelsUsersData = new GetwheelsUsersData(name, email, input_password, phone);
 
-                        FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info").setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
                                     Intent intent=new Intent(signupactivity.this,MainActivity.class);
                                     startActivity(intent);
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Confirmation")
+                                            .setValue("false");
                                   Toast.makeText(signupactivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
+
                                 }
                                 else
                                    {

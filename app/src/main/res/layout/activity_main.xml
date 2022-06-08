@@ -34,6 +34,7 @@
         android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="#706E6E"
+        android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +55,7 @@
         android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="#706E6E"
+        android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/useremail" />
@@ -69,7 +71,8 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/userpassword"
         app:layout_constraintStart_toStartOf="@+id/userpassword"
-        app:layout_constraintTop_toBottomOf="@+id/userpassword" />
+        app:layout_constraintTop_toBottomOf="@+id/userpassword"
+        android:textSize="13dp"/>
 
     <Button
         android:id="@+id/signup"
@@ -83,19 +86,20 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="13dp"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyle"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/driversignin"
-        android:layout_marginTop="5dp"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/signup" />
 
     <TextView
         android:id="@+id/textView3"
@@ -111,27 +115,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <TextView
-        android:id="@+id/driversignin"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="Driver Login ! Click Here"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup"
-        android:layout_marginTop="30dp"
-        android:textColor="#706E6E"
-        android:textSize="15dp"
-        android:textAlignment="center"/>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="170dp"
-        android:layout_height="2dp"
-        app:layout_constraintEnd_toEndOf="@+id/driversignin"
-        app:layout_constraintStart_toStartOf="@+id/driversignin"
-        app:layout_constraintTop_toBottomOf="@+id/driversignin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

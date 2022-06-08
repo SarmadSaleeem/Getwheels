@@ -47,6 +47,8 @@ public class HomeActivity extends AppCompatActivity{
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth firebaseAuth;
 
+    String confirm="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,7 @@ public class HomeActivity extends AppCompatActivity{
         TextView set_name=header_view.findViewById(R.id.Assign_Name);
         ImageView set_dp=header_view.findViewById(R.id.Assign_Profile);
 
-        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid())
+        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
                 .child("DP Uri").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -102,7 +104,7 @@ public class HomeActivity extends AppCompatActivity{
                                 .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid())
+                                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Basic Info")
                                         .child("DP Uri").setValue(uri.toString());
                             }
                         });
@@ -124,6 +126,31 @@ public class HomeActivity extends AppCompatActivity{
                 if(item.getItemId()==R.id.register_icon){
                     Intent driverregistration=new Intent(HomeActivity.this,Driver_Registration.class);
                     startActivity(driverregistration);
+                }
+
+                else if(item.getItemId()==R.id.Switch_Mode){
+                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid())
+                            .child("Confirmation").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            confirm=snapshot.getValue(String.class);
+
+                            if(confirm.equals("true")){
+                                Intent intent=new Intent(HomeActivity.this,Driver_Mode_ON.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(HomeActivity.this, "Create or Verify Account", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                            Toast.makeText(HomeActivity.this, "Create or Verify Account", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
                 return true;
             }

@@ -221,7 +221,7 @@ public class GetUserDetails extends AppCompatActivity {
 
                     userdatetime dateTime=new userdatetime(Rent_Date,Return_Date,Rent_Time,Return_Time);
 
-                    firebaseDatabase.getReference("Users").child(firebaseAuth.getUid()).child("Date_Time").setValue(dateTime);
+                    firebaseDatabase.getReference("Users").child(firebaseAuth.getUid()).child("Passenger").child("Renting Details").child("Date_Time").setValue(dateTime);
 
                     reference.putFile(forid).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -234,7 +234,7 @@ public class GetUserDetails extends AppCompatActivity {
                             reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Licence_Uri")
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Renting Details").child("Licence_Uri")
                                             .setValue(uri.toString());
                                 }
                             });
@@ -246,7 +246,7 @@ public class GetUserDetails extends AppCompatActivity {
                         reference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Id_Card_Uri")
+                                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Renting Details").child("Id_Card_Uri")
                                         .setValue(uri.toString());
                             }
                         });

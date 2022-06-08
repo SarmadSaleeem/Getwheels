@@ -116,7 +116,7 @@ public class Driver_CNIC extends AppCompatActivity {
                             reference_front_id.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("CNIC").child("Front_Side")
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Driver").child("CNIC").child("Front_Side")
                                             .setValue(uri.toString());
                                 }
                             });
@@ -130,7 +130,7 @@ public class Driver_CNIC extends AppCompatActivity {
                             reference_back_id.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("CNIC").child("Back_Side")
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Driver").child("CNIC").child("Back_Side")
                                             .setValue(uri.toString());
 
                                     progressBar.setVisibility(View.GONE);

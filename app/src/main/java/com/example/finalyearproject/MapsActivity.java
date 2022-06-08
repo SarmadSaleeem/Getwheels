@@ -193,7 +193,7 @@ public class MapsActivity extends AppCompatActivity {
                     location_data.getCurrent_location().observe(MapsActivity.this, new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
-                            firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("User_Locations").child("Pick_Up_Location")
+                            firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations").child("Pick_Up_Location")
                                     .setValue(s);
 
                             Current=s;
@@ -207,7 +207,7 @@ public class MapsActivity extends AppCompatActivity {
 
                                     latLng_current_for_database= new LatLng(pick_up_location_latitude,pick_up_location_longitude);
 
-                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("User_Locations")
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations")
                                             .child("Pick_Up_Location_Coordinates").setValue(latLng_current_for_database);
                                 }
                             } catch (IOException e) {
@@ -221,7 +221,7 @@ public class MapsActivity extends AppCompatActivity {
                         public void onChanged(String s) {
                             Destination=s;
 
-                            firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("User_Locations").child("Drop_Location")
+                            firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations").child("Drop_Location")
                                     .setValue(s);
 
                             try {
@@ -233,7 +233,7 @@ public class MapsActivity extends AppCompatActivity {
 
                                     latLng_destination_for_database= new LatLng(drop_location_latitude,drop_location_longitude);
 
-                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("User_Locations")
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations")
                                             .child("Drop_Location_Coordinates").setValue(latLng_destination_for_database);
                                 }
                             } catch (IOException e) {

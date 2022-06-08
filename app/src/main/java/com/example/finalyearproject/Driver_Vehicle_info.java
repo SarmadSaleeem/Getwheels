@@ -3,6 +3,7 @@ package com.example.finalyearproject;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -84,25 +86,33 @@ public class Driver_Vehicle_info extends AppCompatActivity {
 
                     progressBar.setVisibility(View.VISIBLE);
 
-                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("Vehicle_Info")
+                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Driver").child("Vehicle_Info")
                             .child("Number_Plate_No").setValue(Car_Number_Plate);
 
                     firebaseStorage.getReference("Driver_Data").child(firebaseAuth.getCurrentUser().getUid())
                             .child("Vehicle_Img").putFile(Car_Img_Uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                             firebaseStorage.getReference("Driver_Data").child(firebaseAuth.getCurrentUser().getUid())
-                                    .child("Vehicle_Info").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    .child("Vehicle_Img").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("Vehicle_Info")
-                                            .child("Car_Image_Uri").setValue(uri.toString());
-                                    progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(Driver_Vehicle_info.this, "Details Uploaded", Toast.LENGTH_SHORT).show();
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Driver")
+                                            .child("Vehicle_Info").child("Vehicle_Img").setValue(uri.toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            progressBar.setVisibility(View.GONE);
+                                            Toast.makeText(Driver_Vehicle_info.this, "Details Uploaded", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            progressBar.setVisibility(View.GONE);
+                                            Toast.makeText(Driver_Vehicle_info.this, "Error ", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             });
-
                         }
                     });
                 }

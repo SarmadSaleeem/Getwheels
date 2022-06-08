@@ -63,7 +63,7 @@ public class CarViewforRent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Car_Name").setValue(CarName);
+                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Renting Details").child("Car_Name").setValue(CarName);
 
                 Intent myintent = new Intent(CarViewforRent.this,GetUserDetails.class);
                 startActivity(myintent);

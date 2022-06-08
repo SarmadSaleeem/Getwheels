@@ -82,7 +82,7 @@ public class Driver_Licence extends AppCompatActivity {
                 else {
                     progressBar.setVisibility(View.VISIBLE);
 
-                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("Licence")
+                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Driver").child("Licence")
                             .child("Licence_No").setValue(Driver_licence_No);
 
                     firebaseStorage.getReference("Driver_Data").child(firebaseAuth.getCurrentUser().getUid())
@@ -94,8 +94,8 @@ public class Driver_Licence extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
 
-                                    firebaseDatabase.getReference("Driver").child(firebaseAuth.getCurrentUser().getUid()).child("Licence")
-                                            .child("Licence_Img").setValue(imguri.toString());
+                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Driver").child("Licence")
+                                            .child("Licence_Img").setValue(uri.toString());
 
                                     progressBar.setVisibility(View.GONE);
                                     Toast.makeText(Driver_Licence.this, "Details Uploaded", Toast.LENGTH_SHORT).show();
