@@ -17,6 +17,7 @@
         android:layout_margin="2dp">
 
         <TextView
+            android:id="@+id/Passenger_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sarmad Saleem"
@@ -31,6 +32,7 @@
             android:textStyle="bold"/>
 
         <ImageView
+            android:id="@+id/Passenger_Profile"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:background="@drawable/profile"
@@ -39,6 +41,7 @@
             app:shapeAppearanceOverlay="@style/cirular"/>
 
         <TextView
+            android:id="@+id/Passenger_Current_Location"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
@@ -50,6 +53,7 @@
             android:textSize="12dp" />
 
         <TextView
+            android:id="@+id/Passenger_Destination_Location"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -62,6 +66,7 @@
             android:layout_marginBottom="20dp"/>
 
         <Button
+            android:id="@+id/Cancel_Request"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="160dp"
@@ -75,6 +80,7 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <Button
+            android:id="@+id/Accept_Request"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="280dp"
