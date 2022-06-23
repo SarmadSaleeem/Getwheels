@@ -88,7 +88,7 @@ public class signupactivity extends AppCompatActivity {
             Register_confirm_password.requestFocus();
             Register_confirm_password.setError("Password Not Match");
         }
-        else if(phone.isEmpty()|| phone.length()<11 || !phone.matches("[+]{1}[9]{1}[2]{1}[0-9]{10}")){
+        else if(phone.isEmpty()|| phone.length()<13 || !phone.matches("[+]{1}[9]{1}[2]{1}[0-9]{10}")){
             Register_phoneno.requestFocus();
             Register_phoneno.setError("+92xxxxxxxxxx Valid Format");
         }
@@ -99,7 +99,7 @@ public class signupactivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if (task.isSuccessful()) {
-                        GetwheelsUsersData getwheelsUsersData = new GetwheelsUsersData(name, email, input_password, phone);
+                        GetwheelsUsersData getwheelsUsersData = new GetwheelsUsersData(name, email, phone);
 
                         FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info").setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

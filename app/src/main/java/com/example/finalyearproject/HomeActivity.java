@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity{
     FirebaseAuth firebaseAuth;
 
     String confirm="";
-
+    String name="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,14 +68,26 @@ public class HomeActivity extends AppCompatActivity{
         firebaseStorage=FirebaseStorage.getInstance();
 
         toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
-
         drawerLayout.addDrawerListener(toggle);
-
         toggle.syncState();
 
         View header_view=navigationView.getHeaderView(0);
         TextView set_name=header_view.findViewById(R.id.Assign_Name);
         ImageView set_dp=header_view.findViewById(R.id.Assign_Profile);
+
+        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
+                .child("username").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name=snapshot.getValue(String.class);
+                set_name.setText(name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
                 .child("DP Uri").addValueEventListener(new ValueEventListener() {
@@ -104,7 +116,7 @@ public class HomeActivity extends AppCompatActivity{
                                 .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Basic Info")
+                                firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
                                         .child("DP Uri").setValue(uri.toString());
                             }
                         });
@@ -151,6 +163,21 @@ public class HomeActivity extends AppCompatActivity{
                             Toast.makeText(HomeActivity.this, "Create or Verify Account", Toast.LENGTH_SHORT).show();
                         }
                     });
+                }
+
+                else if(item.getItemId()==R.id.home_icon){
+                    Intent intent=new Intent(HomeActivity.this,HomeActivity.class);
+                    startActivity(intent);
+                }
+
+                else if(item.getItemId()==R.id.Logout_icon){
+                    Intent intent=new Intent(HomeActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
+
+                else if(item.getItemId()==R.id.update_icon){
+                    Intent intent=new Intent(HomeActivity.this,Update_Info.class);
+                    startActivity(intent);
                 }
                 return true;
             }

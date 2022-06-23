@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FinalYearProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Update_Info"
+            android:exported="false" />
+        <activity
             android:name=".Driver_Mode_ON"
             android:exported="false" />
         <!--

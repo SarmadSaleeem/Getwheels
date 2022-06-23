@@ -1,9 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/simplebackground"
+    android:id="@+id/drawer_layout_driver"
+    tools:openDrawer="start"
     tools:context=".Driver_Mode_ON">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#474545"
+            app:navigationIcon="@drawable/ic_baseline_menu_24"
+            app:title="GetWheels"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white">
+
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map_driver"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="700dp"
+            tools:context=".Driver_Mode_ON"
+            android:layout_marginTop="55dp"/>
+
+    </LinearLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#474545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/drawer_driver"
+        app:menu="@menu/menu_driver"
+        app:headerLayout="@layout/drawer_header"
+        android:layout_gravity="start" />
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
