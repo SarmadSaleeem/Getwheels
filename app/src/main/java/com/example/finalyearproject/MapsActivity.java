@@ -51,7 +51,10 @@ import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.api.LogDescriptor;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -110,6 +113,9 @@ public class MapsActivity extends AppCompatActivity {
     MarkerOptions destination_marker;
 
     Polyline polyline=null;
+
+    String Name="";
+    String Dp_Uri="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,6 +135,32 @@ public class MapsActivity extends AppCompatActivity {
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
+
+        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
+                .child("username").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Name=snapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
+                .child("DP Uri").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Dp_Uri=snapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         Places.initialize(getApplicationContext(),"AIzaSyCBTXJYqQUzL1vaqJc7FQ4aUl0L3KIfWGE");
 
@@ -193,7 +225,14 @@ public class MapsActivity extends AppCompatActivity {
                     location_data.getCurrent_location().observe(MapsActivity.this, new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
-                            firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations").child("Pick_Up_Location")
+
+                            firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid())
+                                    .child("Passenger Name").setValue(Name);
+
+                            firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid())
+                                    .child("Passenger DP").setValue(Dp_Uri);
+
+                            firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid()).child("Pick_Up_Location")
                                     .setValue(s);
 
                             Current=s;
@@ -207,8 +246,8 @@ public class MapsActivity extends AppCompatActivity {
 
                                     latLng_current_for_database= new LatLng(pick_up_location_latitude,pick_up_location_longitude);
 
-                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations")
-                                            .child("Pick_Up_Location_Coordinates").setValue(latLng_current_for_database);
+                                    //firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid())
+                                      //      .child("Pick_Up_Location_Coordinates").setValue(latLng_current_for_database);
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -221,7 +260,7 @@ public class MapsActivity extends AppCompatActivity {
                         public void onChanged(String s) {
                             Destination=s;
 
-                            firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations").child("Drop_Location")
+                            firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid()).child("Drop_Location")
                                     .setValue(s);
 
                             try {
@@ -233,8 +272,9 @@ public class MapsActivity extends AppCompatActivity {
 
                                     latLng_destination_for_database= new LatLng(drop_location_latitude,drop_location_longitude);
 
-                                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Booking Details").child("User_Locations")
-                                            .child("Drop_Location_Coordinates").setValue(latLng_destination_for_database);
+                                    //firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid())
+                                     //       .child("Drop_Location_Coordinates").setValue(latLng_destination_for_database);
+
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -383,5 +423,18 @@ public class MapsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public class otherinfo{
+
+        String Name;
+        String Dp_Uri;
+
+        public otherinfo(String name, String dp_Uri) {
+            this.Name = name;
+            this.Dp_Uri = dp_Uri;
+        }
+
+
     }
 }

@@ -101,6 +101,8 @@ public class signupactivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         GetwheelsUsersData getwheelsUsersData = new GetwheelsUsersData(name, email, phone);
 
+                        FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
+                                .child("DP Uri").setValue("");
                         FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info").setValue(getwheelsUsersData).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.text.DateFormat;
@@ -19,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
+import java.util.Stack;
 
 public class GetUserDetails extends AppCompatActivity {
     Button submitinfo;
@@ -66,6 +69,7 @@ public class GetUserDetails extends AppCompatActivity {
 
     public int hour;
     public int minute;
+    String CarName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +99,6 @@ public class GetUserDetails extends AppCompatActivity {
         firebaseStorage=firebaseStorage.getInstance();
         firebaseAuth=firebaseAuth.getInstance();
         firebaseDatabase=firebaseDatabase.getInstance();
-
 
         uploading=findViewById(R.id.imageuploadingprogress);
 
@@ -213,15 +216,16 @@ public class GetUserDetails extends AppCompatActivity {
                 Rent_Time=rent_time.getText().toString();
                 Return_Time=return_time.getText().toString();
 
+                Intent intent=getIntent();
 
-
+                CarName=intent.getStringExtra("CarName");
                 uploading.setVisibility(View.VISIBLE);
 
                 if (forid != null && forlicence != null && Rent_Date.length()!=0 && Return_Date.length()!=0 && Rent_Time.length()!=0 && Return_Time.length()!=0) {
 
-                    userdatetime dateTime=new userdatetime(Rent_Date,Return_Date,Rent_Time,Return_Time);
+                    userdatetime dateTime=new userdatetime(Rent_Date,Return_Date,Rent_Time,Return_Time,CarName);
 
-                    firebaseDatabase.getReference("Users").child(firebaseAuth.getUid()).child("Passenger").child("Renting Details").child("Date_Time").setValue(dateTime);
+                    firebaseDatabase.getReference("Renting Requests").child(firebaseAuth.getCurrentUser().getUid()).setValue(dateTime);
 
                     reference.putFile(forid).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -275,13 +279,14 @@ public class GetUserDetails extends AppCompatActivity {
         public String Return_Date;
         public String Rent_Time;
         public String Return_Time;
+        public String CarName;
 
-        public userdatetime(String rentDate, String returnDate,String rent_time,String return_time) {
+        public userdatetime(String rentDate, String returnDate, String rent_time, String return_time, String CarName) {
             this.Rent_Date = rentDate;
             this.Return_Date = returnDate;
             this.Rent_Time=rent_time;
             this.Return_Time=return_time;
-
+            this.CarName=CarName;
         }
     }
 }
