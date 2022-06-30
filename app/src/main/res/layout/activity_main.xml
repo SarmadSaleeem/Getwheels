@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/simplebackground"
     tools:context=".MainActivity"
-    android:id="@+id/mainactivitylayout">
+    android:id="@+id/mainactivitylayout"
+    android:visibility="visible">
 
     <ImageView
         android:id="@+id/logo"
@@ -72,7 +73,8 @@
         app:layout_constraintEnd_toEndOf="@+id/userpassword"
         app:layout_constraintStart_toStartOf="@+id/userpassword"
         app:layout_constraintTop_toBottomOf="@+id/userpassword"
-        android:textSize="13dp"/>
+        android:textSize="13dp"
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/signup"
@@ -87,7 +89,8 @@
         app:layout_constraintStart_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/login"
         android:textColor="@color/black"
-        android:textSize="13dp"/>
+        android:textSize="13dp"
+        android:visibility="visible"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -115,6 +118,76 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <RelativeLayout
+        android:id="@+id/admin_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/simplebackground"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/admin_username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="250dp"
+            android:background="@drawable/field"
+            android:hint="Username"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textAlignment="center"
+            android:fontFamily="@font/antic"
+            android:textSize="12dp"/>
+
+        <EditText
+            android:id="@+id/admin_pass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="320dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/field"
+            android:hint="Password"
+            android:textColorHint="@color/black"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:fontFamily="@font/antic"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/admin_login"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="390dp"
+            android:background="@drawable/signupbutton"
+            android:fontFamily="@font/antic"
+            android:text="Login"
+            android:textSize="12dp"/>
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/admin_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin Login"
+        android:textColor="#1E6BA8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup"
+        android:fontFamily="@font/antic"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

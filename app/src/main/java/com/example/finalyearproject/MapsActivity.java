@@ -21,6 +21,7 @@ import android.location.Location;
 import android.media.RoutingSessionInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -92,23 +93,10 @@ public class MapsActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
 
-    List<Address> current_database_location;
-    List<Address> destination_database_location;
+    List<Address> list1;
+    List<Address> list2;
 
     GoogleMap map;
-
-    LatLng latLng_current_for_database;
-    LatLng latLng_destination_for_database;
-
-    double pick_up_location_latitude;
-    double pick_up_location_longitude;
-
-    double drop_location_latitude;
-    double drop_location_longitude;
-
-    String Current;
-    String Destination;
-
     MarkerOptions current_marker;
     MarkerOptions destination_marker;
 
@@ -116,6 +104,18 @@ public class MapsActivity extends AppCompatActivity {
 
     String Name="";
     String Dp_Uri="";
+
+    String Current_Location;
+    String Destination_Location;
+
+    LatLng current;
+    LatLng destination;
+
+    double lat_C;
+    double Long_C;
+    double Lat_D;
+    double Long_D;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,15 +150,10 @@ public class MapsActivity extends AppCompatActivity {
         });
 
         firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger").child("Basic Info")
-                .child("DP Uri").addValueEventListener(new ValueEventListener() {
+                .child("DP Uri").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Dp_Uri=snapshot.getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                Dp_Uri=dataSnapshot.getValue(String.class);
             }
         });
 
@@ -222,18 +217,48 @@ public class MapsActivity extends AppCompatActivity {
                 }
 
                 else {
-                    location_data.getCurrent_location().observe(MapsActivity.this, new Observer<String>() {
+
+                    Geocoder geocoder=new Geocoder(MapsActivity.this);
+
+                    try {
+                        list1=geocoder.getFromLocationName(Current_Location,1);
+
+                        if(Current_Location!=null) {
+                            lat_C = list1.get(0).getLatitude();
+                            Long_C = list1.get(0).getLongitude();
+                            current = new LatLng(lat_C, Long_C);
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+                    try {
+                        list2=geocoder.getFromLocationName(Destination_Location,1);
+                        Lat_D=list2.get(0).getLatitude();
+                        Long_D=list2.get(0).getLongitude();
+                        destination=new LatLng(Lat_D,Long_D);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                            /*.observe(MapsActivity.this, new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
 
                             firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid())
-                                    .child("Passenger Name").setValue(Name);
+                                    .child("Passenger_Name").setValue(Name);
 
                             firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid())
-                                    .child("Passenger DP").setValue(Dp_Uri);
+                                    .child("Passenger_DP").setValue(Dp_Uri);
 
                             firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid()).child("Pick_Up_Location")
                                     .setValue(s);
+                            Current_Location=s;
 
                             Current=s;
 
@@ -255,13 +280,24 @@ public class MapsActivity extends AppCompatActivity {
                         }
                     });
 
-                    location_data.getDestination_location().observe(MapsActivity.this, new Observer<String>() {
+
+                             */
+
+
+
+
+
+                        /*    .observe(MapsActivity.this, new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             Destination=s;
 
                             firebaseDatabase.getReference("Booking Requests").child(firebaseAuth.getCurrentUser().getUid()).child("Drop_Location")
                                     .setValue(s);
+
+                            String id=firebaseAuth.getCurrentUser().getUid();
+
+                            adaptorRequests adaptor =new adaptorRequests(id);
 
                             try {
                                 destination_database_location=geocoder.getFromLocationName(s,1);
@@ -282,13 +318,54 @@ public class MapsActivity extends AppCompatActivity {
                         }
                     });
 
+
+
+
+                         */
+
+                    firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid()).child("Pick_Up_Location")
+                            .setValue(Current_Location);
+
+                    firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid()).child("Drop_Location")
+                            .setValue(Destination_Location);
+
+                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger")
+                            .child("Basic Info").child("username").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                        @Override
+                        public void onSuccess(DataSnapshot dataSnapshot) {
+                            Name=dataSnapshot.getValue(String.class);
+                        }
+                    });
+
+                    firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger")
+                            .child("Basic Info").child("DP Uri").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                        @Override
+                        public void onSuccess(DataSnapshot dataSnapshot) {
+                            Dp_Uri = dataSnapshot.getValue(String.class);
+                        }
+                    });
+
+                    firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger_Name")
+                            .setValue(Name);
+
+                    firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger_DP")
+                            .setValue(Dp_Uri);
+
                     List<PatternItem> pattern=Arrays.<PatternItem> asList(new Dash(30),new Gap(20));
 
                     if(polyline != null) polyline.remove();
 
-                    PolylineOptions polylineOptions=new PolylineOptions().add(latLng_current_for_database,latLng_destination_for_database).clickable(true);
+                    PolylineOptions polylineOptions=new PolylineOptions().add(current,destination).clickable(true);
 
                     polyline=map.addPolyline(polylineOptions.width(10).color(Color.MAGENTA).geodesic(false).pattern(pattern));
+
+                    final Handler handler= new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid()).removeValue();
+                        }
+                    },10000);
                 }
             }
         });
@@ -363,10 +440,26 @@ public class MapsActivity extends AppCompatActivity {
                        latLng=new LatLng(location.getLatitude(),location.getLongitude());
                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,18));
 
+                        /*
+                        MarkerOptions one =new MarkerOptions().position(current).title("Pick_Up_Location");
+                        map.addMarker(one);
+                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(current,15));
+
+
+
+
+                        MarkerOptions two=new MarkerOptions().position(destination).title("Drop_Location");
+                        map.addMarker(two);
+                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(destination,15));
+                        
+                         */
+
                         location_data.getCurrent_location().observe(MapsActivity.this, new Observer<String>() {
                             @Override
                             public void onChanged(String s) {
                                 try {
+
+                                    Current_Location=s;
                                     addressList_current=geocoder.getFromLocationName(s,1);
                                     if(addressList_current != null){
 
@@ -393,6 +486,7 @@ public class MapsActivity extends AppCompatActivity {
                         location_data.getDestination_location().observe(MapsActivity.this, new Observer<String>() {
                             @Override
                             public void onChanged(String s) {
+                                Destination_Location=s;
                                 try {
                                     addressList_destination=geocoder.getFromLocationName(s,1);
 
@@ -415,6 +509,7 @@ public class MapsActivity extends AppCompatActivity {
                                 }
                             }
                         });
+
                     }
                 });
 
@@ -423,18 +518,5 @@ public class MapsActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    public class otherinfo{
-
-        String Name;
-        String Dp_Uri;
-
-        public otherinfo(String name, String dp_Uri) {
-            this.Name = name;
-            this.Dp_Uri = dp_Uri;
-        }
-
-
     }
 }

@@ -2,7 +2,9 @@ package com.example.finalyearproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +28,17 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseAuth mauth;
 
-    TextView driver_sign_in;
+    RelativeLayout admin_layout;
+    EditText admin_username;
+    EditText admin_pass;
+    Button admin_signin;
+
+    TextView admin_switch;
+
+    String user="admin";
+    String pass="admin";
+
+    ConstraintLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +53,37 @@ public class MainActivity extends AppCompatActivity {
         User_password=findViewById(R.id.userpassword);
         progressBar=findViewById(R.id.progressBar2);
         mauth=FirebaseAuth.getInstance();
+
+        layout=findViewById(R.id.mainactivitylayout);
+
+        admin_layout=findViewById(R.id.admin_layout);
+        admin_username=findViewById(R.id.admin_username);
+        admin_pass=findViewById(R.id.admin_pass);
+        admin_signin=findViewById(R.id.admin_login);
+        admin_switch=findViewById(R.id.admin_switch);
+
+        admin_switch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login.setVisibility(View.GONE);
+                signup.setVisibility(View.GONE);
+                admin_switch.setVisibility(View.GONE);
+                admin_layout.setVisibility(View.VISIBLE);
+
+                admin_signin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String username=admin_username.getText().toString();
+                        String password=admin_pass.getText().toString();
+
+                        if(username.equals(user) && password.equals(pass)){
+                            Intent intent=new Intent(MainActivity.this,Admin_Activity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+            }
+        });
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +43,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
@@ -50,7 +54,10 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.function.Predicate;
 
 public class Driver_Mode_ON extends AppCompatActivity {
 
@@ -65,15 +72,22 @@ public class Driver_Mode_ON extends AppCompatActivity {
     FusedLocationProviderClient locationProviderClient;
     SupportMapFragment supportMapFragment;
 
-    Adapter_For_Request adapter;
     RecyclerView recyclerView;
+    adaptorRequests myadaptor;
+    DatabaseReference database;
+    String Drop_Location;
+    String Passenger_DP;
+    String Passenger_Name;
+    String Pick_Up_Location;
+
+    ArrayList<Booking_Request_Data> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_mode_on);
 
         locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_driver);
+        //supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_driver);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -92,10 +106,43 @@ public class Driver_Mode_ON extends AppCompatActivity {
         TextView set_name = header_view.findViewById(R.id.Assign_Name);
         ImageView set_dp = header_view.findViewById(R.id.Assign_Profile);
 
-        recyclerView=(RecyclerView)findViewById(R.id.Booking_Requests_Recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel=new NotificationChannel("01","xyz", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager=getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(notificationChannel);
+        }
 
-        firebaseDatabase.getReference("Booking Requests").addChildEventListener(new ChildEventListener() {
+
+
+        database=FirebaseDatabase.getInstance().getReference("Booking Details");
+        recyclerView=(RecyclerView)findViewById(R.id.Booking_Requests_Recycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(Driver_Mode_ON.this));
+
+        list=new ArrayList<>();
+        myadaptor=new adaptorRequests(Driver_Mode_ON.this,list);
+        recyclerView.setAdapter(myadaptor);
+        /*
+
+        FirebaseRecyclerOptions<Booking_Request_Data> options =
+                new FirebaseRecyclerOptions.Builder<Booking_Request_Data>()
+                        .setQuery(firebaseDatabase.getReference("Booking Requests"), Booking_Request_Data.class)
+                        .build();
+
+
+
+        adapter=new Adapter_For_Request(options);
+        recyclerView.setAdapter(adapter);
+
+
+
+        Booking_Request_Data data=new Booking_Request_Data(name,dp,address,address)
+        ArrayList<Booking_Request_Data> requestData;
+        requestData.add(data);
+
+
+
+       firebaseDatabase.getReference("Booking Requests").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 FirebaseRecyclerOptions<Booking_Request_Data> options =
@@ -103,9 +150,12 @@ public class Driver_Mode_ON extends AppCompatActivity {
                                 .setQuery(firebaseDatabase.getReference("Booking Requests"), Booking_Request_Data.class)
                                 .build();
 
-                adapter=new Adapter_For_Request(options);
-                recyclerView.setAdapter(adapter);
+                //adapter=new Adapter_For_Request(options);
+                //recyclerView.setAdapter(adapter);
+                adapter.updateOptions(options);
             }
+
+
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -114,8 +164,9 @@ public class Driver_Mode_ON extends AppCompatActivity {
                                 .setQuery(firebaseDatabase.getReference("Booking Requests"), Booking_Request_Data.class)
                                 .build();
 
-                adapter=new Adapter_For_Request(options);
-                recyclerView.setAdapter(adapter);
+                //adapter=new Adapter_For_Request(options);
+                //recyclerView.setAdapter(adapter);
+                adapter.updateOptions(options);
             }
 
             @Override
@@ -131,6 +182,46 @@ public class Driver_Mode_ON extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+         */
+
+       firebaseDatabase.getReference("Booking Details").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+           Booking_Request_Data bookingRequestData;
+           @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                dataSnapshot.getRef().addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                       bookingRequestData = snapshot.getValue(Booking_Request_Data.class);
+
+                        list.add(bookingRequestData);
+
+                        myadaptor.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                        list.remove(bookingRequestData);
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
@@ -170,6 +261,22 @@ public class Driver_Mode_ON extends AppCompatActivity {
                     Intent intent = new Intent(Driver_Mode_ON.this, HomeActivity.class);
                     startActivity(intent);
                 }
+
+                if(item.getItemId() == R.id.home_icon_driver){
+                    Intent intent=new Intent(Driver_Mode_ON.this,HomeActivity.class);
+                    startActivity(intent);
+                }
+
+                if(item.getItemId() == R.id.update_icon_driver){
+
+                    Intent intent=new Intent(Driver_Mode_ON.this,Update_Info.class);
+                    startActivity(intent);
+                }
+
+                if (item.getItemId() == R.id.Logout_icon_driver){
+                    Intent intent=new Intent(Driver_Mode_ON.this,MainActivity.class);
+                    startActivity(intent);
+                }
                 return false;
             }
         });
@@ -177,7 +284,7 @@ public class Driver_Mode_ON extends AppCompatActivity {
         Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                getmylocation();
+                //getmylocation();
 
             }
 
@@ -195,7 +302,8 @@ public class Driver_Mode_ON extends AppCompatActivity {
 
     }
 
-    @Override
+    /*
+   @Override
     protected void onStart() {
         super.onStart();
         adapter.startListening();
@@ -206,6 +314,12 @@ public class Driver_Mode_ON extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
+
+
+     */
+
+    /*
 
     private void getmylocation() {
 
@@ -235,5 +349,8 @@ public class Driver_Mode_ON extends AppCompatActivity {
             }
         });
     }
+
+ */
+
 
 }

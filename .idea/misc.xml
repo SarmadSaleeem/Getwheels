@@ -35,6 +35,7 @@
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.236" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.236" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/drawable/reject_button.xml" value="0.25" />
+        <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_admin.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_driver_cnic.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_driver_licence.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_driver_mode_on.xml" value="0.25" />
@@ -45,12 +46,14 @@
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_maps.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_renting.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_signupactivity.xml" value="0.25" />
+        <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/activity_update_info.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/basic_info_driver.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/drawer_header.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/driver_registration.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/passenger_request_recycler.xml" value="0.4" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/recycler_view_items.xml" value="0.25" />
+        <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/layout/renting_details_recyclerview.xml" value="0.264" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/menu/drawer_menu.xml" value="0.25" />
         <entry key="..\:/Users/SarmadSaleem/StudioProjects/Getwheels/app/src/main/res/menu/menu_driver.xml" value="0.25" />
         <entry key="..\:/Users/sarma/StudioProjects/Getwheels/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.168" />

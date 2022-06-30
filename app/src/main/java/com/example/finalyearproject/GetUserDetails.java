@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -71,6 +72,9 @@ public class GetUserDetails extends AppCompatActivity {
     public int minute;
     String CarName="";
 
+    String Name="";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +108,15 @@ public class GetUserDetails extends AppCompatActivity {
 
         StorageReference reference=firebaseStorage.getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("ID_Card_");
         StorageReference reference1=firebaseStorage.getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("licence_");
+
+        firebaseDatabase.getReference("Users").child(firebaseAuth.getCurrentUser().getUid()).child("Passenger")
+                .child("Basic Info").child("username").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+
+                Name=dataSnapshot.getValue(String.class);
+            }
+        });
 
         date1.setFocusable(false);
         date1.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +236,7 @@ public class GetUserDetails extends AppCompatActivity {
 
                 if (forid != null && forlicence != null && Rent_Date.length()!=0 && Return_Date.length()!=0 && Rent_Time.length()!=0 && Return_Time.length()!=0) {
 
-                    userdatetime dateTime=new userdatetime(Rent_Date,Return_Date,Rent_Time,Return_Time,CarName);
+                    userdatetime dateTime=new userdatetime(Rent_Date,Return_Date,Rent_Time,Return_Time,CarName,Name);
 
                     firebaseDatabase.getReference("Renting Requests").child(firebaseAuth.getCurrentUser().getUid()).setValue(dateTime);
 
@@ -254,7 +267,7 @@ public class GetUserDetails extends AppCompatActivity {
                                         .setValue(uri.toString());
                             }
                         });
-                        Toast.makeText(getApplicationContext(), "Files Uploaded", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Request Submitted", Toast.LENGTH_SHORT).show();
                         uploading.setVisibility(View.GONE);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -280,13 +293,15 @@ public class GetUserDetails extends AppCompatActivity {
         public String Rent_Time;
         public String Return_Time;
         public String CarName;
+        public String Name;
 
-        public userdatetime(String rentDate, String returnDate, String rent_time, String return_time, String CarName) {
+        public userdatetime(String rentDate, String returnDate, String rent_time, String return_time, String CarName,String Name) {
             this.Rent_Date = rentDate;
             this.Return_Date = returnDate;
             this.Rent_Time=rent_time;
             this.Return_Time=return_time;
             this.CarName=CarName;
+            this.Name=Name;
         }
     }
 }
