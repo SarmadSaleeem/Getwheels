@@ -365,7 +365,7 @@ public class MapsActivity extends AppCompatActivity {
                         public void run() {
                             firebaseDatabase.getReference("Booking Details").child(firebaseAuth.getCurrentUser().getUid()).removeValue();
                         }
-                    },10000);
+                    },15000);
                 }
             }
         });
